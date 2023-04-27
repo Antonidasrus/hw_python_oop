@@ -58,8 +58,8 @@ class Training:
 
 
 class Running(Training):
-    """Тренировка: бег."""
-    """Коэффициенты для формулы подсчета калорий при БЕГЕ."""
+    """Тренировка: бег.
+       Коэффициенты для формулы подсчета калорий при БЕГЕ."""
     RUN_SPEED_MULTIPLIER: float = 18.0  # Константа № 1 (для бега)
     RUN_SPEED_SHIFT: float = 1.79       # Константа № 2 (для бега)
 
@@ -72,8 +72,8 @@ class Running(Training):
 
 
 class SportsWalking(Training):
-    """Тренировка: спортивная ходьба."""
-    """Коэффициенты для формулы подсчета калорий при ХОДЬБЕ."""
+    """Тренировка: спортивная ходьба.
+       Коэффициенты для формулы подсчета калорий при ХОДЬБЕ."""
     WLK_WEIGHT_MULTIPLIER: float = 0.035    # Константа № 1 (для ходьбы)
     WLK_SPEED_MULTIPLIER: float = 0.029     # Константа № 2 (для ходьбы)
     WLK_SPEED_CONVERTER: float = 0.278      # Для перевода [км/ч] -> [м/с]
@@ -95,8 +95,8 @@ class SportsWalking(Training):
 
 
 class Swimming(Training):
-    """Тренировка: плавание."""
-    """Коэффициенты для формулы подсчета калорий при ПЛАВАНИИ."""
+    """Тренировка: плавание.
+       Коэффициенты для формулы подсчета калорий при ПЛАВАНИИ."""
     SWM_SPEED_SHIFT: float = 1.1        # Константа № 1 (для плавания)
     SWM_SPEED_MULTIPLIER: float = 2     # Константа № 2 (для плавания)
     LEN_STEP: float = 1.38              # Длина одного гребка при плавании
@@ -124,8 +124,7 @@ def read_package(workout_type: str, data: list[float]) -> Training:
         'WLK': SportsWalking,
     }
     if workout_type in training_types:
-        new_training = training_types[workout_type](*data)
-        return new_training
+        return training_types[workout_type](*data)
     raise ValueError(f'Нет такой тренировки: {workout_type}')
 
 
